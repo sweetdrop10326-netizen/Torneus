@@ -95,7 +95,7 @@
   .btn-close{margin-top:10px;padding:10px 32px;background:linear-gradient(90deg,var(--fire),var(--gold));border:none;border-radius:8px;color:#000;font-family:'Bebas Neue',sans-serif;font-size:1.2rem;cursor:pointer;letter-spacing:2px}
   .flame{position:fixed;font-size:1.5rem;pointer-events:none;animation:float-up var(--dur,4s) ease-in infinite;opacity:0;z-index:0}
   @keyframes float-up{0%{transform:translateY(100vh) rotate(0deg);opacity:.6}100%{transform:translateY(-20vh) rotate(20deg);opacity:0}}
-  footer{text-align:center;padding:30px 0 20px;color:rgba(255,255,255,.2);font-size:.8rem;letter-spacing:2px}
+  .btn-whatsapp{display:block;width:100%;padding:16px;background:linear-gradient(135deg,#25d366,#128c7e);border-radius:10px;color:#fff;font-family:"Bebas Neue",sans-serif;font-size:1.5rem;letter-spacing:3px;text-align:center;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:transform .15s,box-shadow .15s;margin-bottom:20px}.btn-whatsapp:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(37,211,102,.6)}.btn-whatsapp:active{transform:scale(.98)}footer{text-align:center;padding:30px 0 20px;color:rgba(255,255,255,.2);font-size:.8rem;letter-spacing:2px}
 </style>
 </head>
 <body>
@@ -168,7 +168,7 @@
     <button class="btn-inscribirse" id="btnInscribirse" onclick="inscribirse()">🔥 ¡YO QUIERO JUGAR! 🔥</button>
   </div>
 
-  <footer>GRAN TORNEO DE JUEGOS &nbsp;·&nbsp; PRÓXIMAMENTE &nbsp;·&nbsp; ⚡</footer>
+  <div class="container" style="position:relative;z-index:1;max-width:700px;margin:0 auto;padding:0 20px 20px"><a href="https://chat.whatsapp.com/J6pSviQ965a2vwqn0kivQS" target="_blank" class="btn-whatsapp">💬 ÚNETE AL GRUPO DE WHATSAPP</a></div><footer>GRAN TORNEO DE JUEGOS &nbsp;·&nbsp; PRÓXIMAMENTE &nbsp;·&nbsp; ⚡</footer>
 </div>
 
 <div class="success-overlay" id="success">
