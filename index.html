@@ -29,15 +29,27 @@
   .meter-fill{height:100%;width:0%;background:linear-gradient(90deg,#ff4500,#ffd700,#fff);border-radius:7px;box-shadow:0 0 12px rgba(255,100,0,.8);animation:fill-meter 2.5s ease forwards .5s}
   @keyframes fill-meter{to{width:95%}}
   .meter-text{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--gold);white-space:nowrap}
-  .prizes{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}
-  .prize-card{background:var(--panel);border-radius:10px;padding:16px 10px;text-align:center;border:1px solid rgba(255,255,255,.07);transition:transform .2s,border-color .2s}
-  .prize-card:hover{transform:translateY(-4px);border-color:var(--gold)}
-  .prize-icon{font-size:2rem}
-  .prize-place{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;margin:4px 0 2px}
-  .prize-card:nth-child(1) .prize-place{color:var(--gold)}
-  .prize-card:nth-child(2) .prize-place{color:#c0c0c0}
-  .prize-card:nth-child(3) .prize-place{color:#cd7f32}
-  .prize-amount{font-size:.9rem;color:rgba(255,255,255,.6)}
+
+  /* JUEGOS - 2 tarjetas grandes */
+  .games{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+  .game-card{background:var(--panel);border-radius:14px;padding:24px 14px;text-align:center;border:2px solid rgba(255,255,255,.07);transition:transform .2s,border-color .2s;position:relative;overflow:hidden}
+  .game-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+  .game-card:nth-child(1){border-color:rgba(255,215,0,.3)}
+  .game-card:nth-child(1)::before{background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+  .game-card:nth-child(2){border-color:rgba(0,240,255,.3)}
+  .game-card:nth-child(2)::before{background:linear-gradient(90deg,transparent,var(--electric),transparent)}
+  .game-card:hover{transform:translateY(-5px)}
+  .game-card:nth-child(1):hover{border-color:var(--gold)}
+  .game-card:nth-child(2):hover{border-color:var(--electric)}
+  .game-num{font-size:.7rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px}
+  .game-card:nth-child(1) .game-num{color:var(--gold)}
+  .game-card:nth-child(2) .game-num{color:var(--electric)}
+  .game-voted{font-size:.72rem;letter-spacing:2px;color:rgba(255,255,255,.4);margin-bottom:10px;text-transform:uppercase}
+  .game-icon{font-size:2.8rem;margin-bottom:8px}
+  .game-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,7vw,3rem);letter-spacing:2px;line-height:1}
+  .game-card:nth-child(1) .game-name{color:var(--gold);text-shadow:0 0 20px rgba(255,215,0,.5)}
+  .game-card:nth-child(2) .game-name{color:var(--electric);text-shadow:0 0 20px rgba(0,240,255,.5)}
+
   /* PREMIO EN EFECTIVO */
   .efectivo-section{background:var(--panel);border:2px solid var(--gold);border-radius:16px;padding:28px 20px;text-align:center;margin:24px 0;position:relative;overflow:hidden}
   .efectivo-section::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),#fff,var(--gold),transparent)}
@@ -47,11 +59,13 @@
   @keyframes shine-text{to{background-position:200% center}}
   .efectivo-coins{font-size:2.5rem;margin-top:6px;animation:bounce-coins 1.5s ease infinite}
   @keyframes bounce-coins{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-  /* Fecha */
+
+  /* FECHA */
   .countdown-section{background:var(--panel);border:1px solid rgba(0,240,255,.25);border-radius:12px;padding:24px 20px;text-align:center;margin:24px 0}
   .cd-label{font-size:.75rem;letter-spacing:3px;color:var(--electric);margin-bottom:12px}
   .cd-pronto{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--gold);letter-spacing:4px;text-shadow:0 0 20px rgba(255,215,0,.5);animation:pulse-badge 2s infinite}
   .cd-sub{font-size:.85rem;color:rgba(255,255,255,.4);margin-top:8px;letter-spacing:2px}
+
   .form-section{background:var(--panel);border:1px solid rgba(255,69,0,.25);border-radius:16px;padding:28px 24px;position:relative;overflow:hidden}
   .form-section::after{content:'⚡';position:absolute;font-size:8rem;opacity:.03;right:-20px;top:50%;transform:translateY(-50%);pointer-events:none}
   .form-title{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;margin-bottom:20px;color:var(--gold);letter-spacing:1px}
@@ -107,11 +121,20 @@
     </div>
   </div>
 
-  <!-- PREMIOS -->
-  <div class="prizes">
-    <div class="prize-card"><div class="prize-icon">🥇</div><div class="prize-place">1.º Lugar</div><div class="prize-amount">Valorant</div></div>
-    <div class="prize-card"><div class="prize-icon">🥈</div><div class="prize-place">2.º Lugar</div><div class="prize-amount">FIFA</div></div>
-    <div class="prize-card"><div class="prize-icon">🥉</div><div class="prize-place">3.º Lugar</div><div class="prize-amount">Buen premio</div></div>
+  <!-- JUEGOS -->
+  <div class="games">
+    <div class="game-card">
+      <div class="game-num">🎮 Juego 1</div>
+      <div class="game-voted">⭐ Más votado</div>
+      <div class="game-icon">🔫</div>
+      <div class="game-name">VALORANT</div>
+    </div>
+    <div class="game-card">
+      <div class="game-num">🎮 Juego 2</div>
+      <div class="game-voted">⚽ Fútbol</div>
+      <div class="game-icon">⚽</div>
+      <div class="game-name">FIFA</div>
+    </div>
   </div>
 
   <!-- PREMIO EN EFECTIVO -->
@@ -128,7 +151,7 @@
     <div class="cd-sub">La fecha se anunciará muy pronto — ¡estate atento!</div>
   </div>
 
-  <!-- FORMULARIO sin campo de juego -->
+  <!-- FORMULARIO -->
   <div class="form-section">
     <div class="form-title">⚔️ Inscríbete ahora</div>
     <div class="field"><label>Nombre completo</label><input type="text" id="nombre" placeholder="Tu nombre de guerrero..."/></div>
