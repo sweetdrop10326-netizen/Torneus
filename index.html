@@ -48,7 +48,7 @@
   .game-icon{font-size:2.8rem;margin-bottom:8px}
   .game-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,7vw,3rem);letter-spacing:2px;line-height:1}
   .game-card:nth-child(1) .game-name{color:var(--gold);text-shadow:0 0 20px rgba(255,215,0,.5)}
-  .game-card:nth-child(2) .game-name{color:var(--electric);text-shadow:0 0 20px rgba(0,240,255,.5)}
+  .game-card:nth-child(2) .game-name{color:var(--electric);text-shadow:0 0 20px rgba(0,240,255,.5)}.game-prize{font-family:"Bebas Neue",sans-serif;font-size:1.1rem;letter-spacing:3px;margin-top:8px;padding:4px 14px;border-radius:20px;display:inline-block;background:linear-gradient(90deg,var(--fire),var(--gold));color:#000}
 
   /* PREMIO EN EFECTIVO */
   .efectivo-section{background:var(--panel);border:2px solid var(--gold);border-radius:16px;padding:28px 20px;text-align:center;margin:24px 0;position:relative;overflow:hidden}
@@ -56,7 +56,7 @@
   .efectivo-section::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),#fff,var(--gold),transparent)}
   .efectivo-label{font-size:.75rem;letter-spacing:3px;color:var(--electric);margin-bottom:10px}
   .efectivo-texto{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8rem,10vw,4.5rem);line-height:1;background:linear-gradient(135deg,#ff8c00,var(--gold),#fff,var(--gold),#ff8c00);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shine-text 3s linear infinite;filter:drop-shadow(0 0 15px rgba(255,215,0,.6));letter-spacing:3px}
-  @keyframes shine-text{to{background-position:200% center}}
+  @keyframes shine-text{to{background-position:200% center}}.efectivo-sub{font-family:"Bebas Neue",sans-serif;font-size:1.4rem;letter-spacing:4px;color:rgba(255,255,255,.5);margin-top:4px}
   .efectivo-coins{font-size:2.5rem;margin-top:6px;animation:bounce-coins 1.5s ease infinite}
   @keyframes bounce-coins{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 
@@ -127,22 +127,20 @@
       <div class="game-num">🎮 Juego 1</div>
       <div class="game-voted">⭐ Más votado</div>
       <div class="game-icon">🔫</div>
-      <div class="game-name">VALORANT
-        (PREMIO)</div>
+      <div class="game-name">VALORANT</div><div class="game-prize">🏆 PREMIO</div>
     </div>
     <div class="game-card">
       <div class="game-num">🎮 Juego 2</div>
       <div class="game-voted">⚽ Fútbol</div>
       <div class="game-icon">⚽</div>
-      <div class="game-name">FIFA
-        (PREMIO)</div>
+      <div class="game-name">FIFA</div><div class="game-prize">🏆 PREMIO</div>
     </div>
   </div>
 
   <!-- PREMIO EN EFECTIVO -->
   <div class="efectivo-section">
     <div class="efectivo-label">💰 EL GANADOR SE LLEVA</div>
-    <div class="efectivo-texto">PREMIO EN EFECTIVO</div>
+    <div class="efectivo-texto">PREMIO EN EFECTIVO</div><div class="efectivo-sub">por juego</div>
     <div class="efectivo-coins">💵💰💵</div>
   </div>
 
@@ -156,7 +154,7 @@
   <!-- FORMULARIO -->
   <div class="form-section">
     <div class="form-title">⚔️ Inscríbete ahora</div>
-    <div class="field"><label>Nombre completo</label><input type="text" id="nombre" placeholder="Tu nombre Completo..."/></div>
+    <div class="field"><label>Nombre completo</label><input type="text" id="nombre" placeholder="Tu nombre de guerrero..."/></div>
     <div class="field">
       <label>Grado / Sección</label>
       <select id="grado">
