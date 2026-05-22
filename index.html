@@ -82,7 +82,7 @@
   .btn-inscribirse:disabled{opacity:.6;cursor:not-allowed;transform:none}
   .spinner{display:inline-block;width:20px;height:20px;border:3px solid rgba(0,0,0,.3);border-top-color:#000;border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:8px}
   @keyframes spin{to{transform:rotate(360deg)}}
-  .error-msg{color:#ff6b6b;font-size:.85rem;margin-top:8px;display:none}
+  .toggle-wrap{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px}.toggle-btn{padding:14px;border:2px solid rgba(255,255,255,.15);border-radius:10px;background:rgba(255,255,255,.05);color:rgba(255,255,255,.5);font-family:"Bebas Neue",sans-serif;font-size:1.3rem;letter-spacing:2px;cursor:pointer;transition:all .2s}.toggle-btn.active{border-color:var(--fire);background:linear-gradient(135deg,rgba(255,69,0,.2),rgba(255,215,0,.1));color:#fff;box-shadow:0 0 16px rgba(255,69,0,.4)}.error-msg{color:#ff6b6b;font-size:.85rem;margin-top:8px;display:none}
   .error-msg.show{display:block}
   .success-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:100;align-items:center;justify-content:center;flex-direction:column;gap:16px;text-align:center;padding:20px}
   .success-overlay.show{display:flex;animation:fadeIn .4s ease}
@@ -163,7 +163,7 @@
         <option>10.º</option><option>11.º</option><option>12.º</option>
       </select>
     </div>
-    <div class="field"><label>WhatsApp / Contacto</label><input type="text" id="contacto" placeholder="Para mandarte info del torneo"/></div>
+    <div class="field"><label>¿En qué juego te inscribes?</label><div class="toggle-wrap"><button type="button" class="toggle-btn active" id="btnValorant" onclick="selectJuego(this,'Valorant')">🔫 VALORANT</button><button type="button" class="toggle-btn" id="btnFifa" onclick="selectJuego(this,'FIFA')">⚽ FIFA</button></div><input type="hidden" id="juego_elegido" value="Valorant"/></div><div class="field"><label>WhatsApp / Contacto</label><input type="text" id="contacto" placeholder="Para mandarte info del torneo"/></div>
     <div class="error-msg" id="errorMsg">⚠️ Completa tu nombre y grado.</div>
     <button class="btn-inscribirse" id="btnInscribirse" onclick="inscribirse()">🔥 ¡YO QUIERO JUGAR! 🔥</button>
   </div>
@@ -181,13 +181,13 @@
 <script>
   const SHEET_URL = "https://script.google.com/macros/s/AKfycbykoz-zMxyG4SXXKLaZ4-hm6ZZ4XAKdYgtQxUPUYPMYvULdgRHp2Ld8kmkUdoUjTWBY/exec";
 
-  const starsEl = document.getElementById('stars');
+  function selectJuego(btn,juego){document.querySelectorAll(".toggle-btn").forEach(b=>b.classList.remove("active"));btn.classList.add("active");document.getElementById("juego_elegido").value=juego;}const starsEl = document.getElementById('stars');
   for(let i=0;i<80;i++){const s=document.createElement('div');s.className='star';s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;--d:${2+Math.random()*4}s;animation-delay:${Math.random()*3}s`;starsEl.appendChild(s);}
 
   async function inscribirse(){
     const nombre=document.getElementById('nombre').value.trim();
     const grado=document.getElementById('grado').value;
-    const contacto=document.getElementById('contacto').value.trim();
+    const juego_elegido=document.getElementById("juego_elegido").value;const contacto=document.getElementById('contacto').value.trim();
     const errEl=document.getElementById('errorMsg');
     const btn=document.getElementById('btnInscribirse');
     if(!nombre||!grado){errEl.classList.add('show');return;}
@@ -195,7 +195,7 @@
     btn.disabled=true;
     btn.innerHTML='<span class="spinner"></span> GUARDANDO...';
     try{
-      await fetch(`${SHEET_URL}?nombre=${encodeURIComponent(nombre)}&grado=${encodeURIComponent(grado)}&contacto=${encodeURIComponent(contacto)}`,{method:'GET',mode:'no-cors'});
+      await fetch(`${SHEET_URL}?nombre=${encodeURIComponent(nombre)}&grado=${encodeURIComponent(grado)}&juego=${encodeURIComponent(juego_elegido)}&contacto=${encodeURIComponent(contacto)}`,{method:'GET',mode:'no-cors'});
     }catch(e){console.log('Enviado');}
     document.getElementById('successName').textContent=nombre;
     document.getElementById('success').classList.add('show');
